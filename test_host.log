@@ -1,0 +1,185 @@
+
+> eventpass-backend@1.0.0 test
+> jest --verbose
+
+  console.warn
+    prisma:warn Prisma failed to detect the libssl/openssl version to use, and may not work as expected. Defaulting to "openssl-1.1.x".
+    Please manually install OpenSSL and try installing Prisma again.
+
+       9 |
+      10 |     beforeAll(async () => {
+    > 11 |         await prisma.ticket.deleteMany();
+         |         ^
+      12 |         await prisma.event.deleteMany();
+      13 |         await prisma.user.deleteMany();
+      14 |
+
+      at Br (node_modules/@prisma/client/runtime/library.js:4:6542)
+      at Vu (node_modules/@prisma/client/runtime/library.js:5:3402)
+      at Mo (node_modules/@prisma/client/runtime/library.js:5:2468)
+      at nt (node_modules/@prisma/client/runtime/library.js:5:2238)
+      at _r.getCurrentBinaryTarget (node_modules/@prisma/client/runtime/library.js:111:12722)
+      at _r.instantiateLibrary (node_modules/@prisma/client/runtime/library.js:111:12563)
+      at _r.start (node_modules/@prisma/client/runtime/library.js:112:1976)
+      at _r.request (node_modules/@prisma/client/runtime/library.js:112:3638)
+      at Object.singleLoader (node_modules/@prisma/client/runtime/library.js:121:5702)
+      at $n.request (node_modules/@prisma/client/runtime/library.js:121:6194)
+      at l (node_modules/@prisma/client/runtime/library.js:130:9633)
+      at Object.<anonymous> (tests/integration/ticket.test.ts:11:9)
+
+FAIL tests/integration/ticket.test.ts
+  Ticket Concurrency
+    ✕ should prevent overbooking using atomic transactions (1 ms)
+
+  ● Ticket Concurrency › should prevent overbooking using atomic transactions
+
+    PrismaClientInitializationError: 
+    Invalid `prisma.ticket.deleteMany()` invocation in
+    /app/tests/integration/ticket.test.ts:11:29
+
+       8 let userTokens: string[] = [];
+       9 
+      10 beforeAll(async () => {
+    → 11     await prisma.ticket.deleteMany(
+    Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+    The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+    Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+
+       9 |
+      10 |     beforeAll(async () => {
+    > 11 |         await prisma.ticket.deleteMany();
+         |         ^
+      12 |         await prisma.event.deleteMany();
+      13 |         await prisma.user.deleteMany();
+      14 |
+
+      at $n.handleRequestError (node_modules/@prisma/client/runtime/library.js:121:7615)
+      at $n.handleAndLogRequestError (node_modules/@prisma/client/runtime/library.js:121:6623)
+      at $n.request (node_modules/@prisma/client/runtime/library.js:121:6307)
+      at l (node_modules/@prisma/client/runtime/library.js:130:9633)
+      at Object.<anonymous> (tests/integration/ticket.test.ts:11:9)
+
+  console.warn
+    prisma:warn Prisma failed to detect the libssl/openssl version to use, and may not work as expected. Defaulting to "openssl-1.1.x".
+    Please manually install OpenSSL and try installing Prisma again.
+
+       5 | describe('Auth Integration', () => {
+       6 |     beforeAll(async () => {
+    >  7 |         await prisma.ticket.deleteMany();
+         |         ^
+       8 |         await prisma.event.deleteMany();
+       9 |         await prisma.user.deleteMany();
+      10 |     });
+
+      at Br (node_modules/@prisma/client/runtime/library.js:4:6542)
+      at Vu (node_modules/@prisma/client/runtime/library.js:5:3402)
+      at Mo (node_modules/@prisma/client/runtime/library.js:5:2468)
+      at nt (node_modules/@prisma/client/runtime/library.js:5:2238)
+      at _r.getCurrentBinaryTarget (node_modules/@prisma/client/runtime/library.js:111:12722)
+      at _r.instantiateLibrary (node_modules/@prisma/client/runtime/library.js:111:12563)
+      at _r.start (node_modules/@prisma/client/runtime/library.js:112:1976)
+      at _r.request (node_modules/@prisma/client/runtime/library.js:112:3638)
+      at Object.singleLoader (node_modules/@prisma/client/runtime/library.js:121:5702)
+      at $n.request (node_modules/@prisma/client/runtime/library.js:121:6194)
+      at l (node_modules/@prisma/client/runtime/library.js:130:9633)
+      at Object.<anonymous> (tests/integration/auth.test.ts:7:9)
+
+FAIL tests/integration/auth.test.ts
+  Auth Integration
+    ✕ should register a new user
+    ✕ should login with valid credentials (1 ms)
+    ✕ should not login with invalid credentials (1 ms)
+
+  ● Auth Integration › should register a new user
+
+    PrismaClientInitializationError: 
+    Invalid `prisma.ticket.deleteMany()` invocation in
+    /app/tests/integration/auth.test.ts:7:29
+
+      4 
+      5 describe('Auth Integration', () => {
+      6     beforeAll(async () => {
+    → 7         await prisma.ticket.deleteMany(
+    Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+    The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+    Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+
+       5 | describe('Auth Integration', () => {
+       6 |     beforeAll(async () => {
+    >  7 |         await prisma.ticket.deleteMany();
+         |         ^
+       8 |         await prisma.event.deleteMany();
+       9 |         await prisma.user.deleteMany();
+      10 |     });
+
+      at $n.handleRequestError (node_modules/@prisma/client/runtime/library.js:121:7615)
+      at $n.handleAndLogRequestError (node_modules/@prisma/client/runtime/library.js:121:6623)
+      at $n.request (node_modules/@prisma/client/runtime/library.js:121:6307)
+      at l (node_modules/@prisma/client/runtime/library.js:130:9633)
+      at Object.<anonymous> (tests/integration/auth.test.ts:7:9)
+
+  ● Auth Integration › should login with valid credentials
+
+    PrismaClientInitializationError: 
+    Invalid `prisma.ticket.deleteMany()` invocation in
+    /app/tests/integration/auth.test.ts:7:29
+
+      4 
+      5 describe('Auth Integration', () => {
+      6     beforeAll(async () => {
+    → 7         await prisma.ticket.deleteMany(
+    Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+    The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+    Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+
+       5 | describe('Auth Integration', () => {
+       6 |     beforeAll(async () => {
+    >  7 |         await prisma.ticket.deleteMany();
+         |         ^
+       8 |         await prisma.event.deleteMany();
+       9 |         await prisma.user.deleteMany();
+      10 |     });
+
+      at $n.handleRequestError (node_modules/@prisma/client/runtime/library.js:121:7615)
+      at $n.handleAndLogRequestError (node_modules/@prisma/client/runtime/library.js:121:6623)
+      at $n.request (node_modules/@prisma/client/runtime/library.js:121:6307)
+      at l (node_modules/@prisma/client/runtime/library.js:130:9633)
+      at Object.<anonymous> (tests/integration/auth.test.ts:7:9)
+
+  ● Auth Integration › should not login with invalid credentials
+
+    PrismaClientInitializationError: 
+    Invalid `prisma.ticket.deleteMany()` invocation in
+    /app/tests/integration/auth.test.ts:7:29
+
+      4 
+      5 describe('Auth Integration', () => {
+      6     beforeAll(async () => {
+    → 7         await prisma.ticket.deleteMany(
+    Unable to require(`/app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node`).
+    The Prisma engines do not seem to be compatible with your system. Please refer to the documentation about Prisma's system requirements: https://pris.ly/d/system-requirements
+
+    Details: Error loading shared library libssl.so.1.1: No such file or directory (needed by /app/node_modules/.prisma/client/libquery_engine-linux-musl.so.node)
+
+       5 | describe('Auth Integration', () => {
+       6 |     beforeAll(async () => {
+    >  7 |         await prisma.ticket.deleteMany();
+         |         ^
+       8 |         await prisma.event.deleteMany();
+       9 |         await prisma.user.deleteMany();
+      10 |     });
+
+      at $n.handleRequestError (node_modules/@prisma/client/runtime/library.js:121:7615)
+      at $n.handleAndLogRequestError (node_modules/@prisma/client/runtime/library.js:121:6623)
+      at $n.request (node_modules/@prisma/client/runtime/library.js:121:6307)
+      at l (node_modules/@prisma/client/runtime/library.js:130:9633)
+      at Object.<anonymous> (tests/integration/auth.test.ts:7:9)
+
+Test Suites: 2 failed, 2 total
+Tests:       4 failed, 4 total
+Snapshots:   0 total
+Time:        4.139 s, estimated 5 s
+Ran all test suites.

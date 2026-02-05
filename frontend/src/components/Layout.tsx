@@ -1,0 +1,49 @@
+import React from 'react';
+import { Link, Outlet } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+
+export const Layout = () => {
+    const { user, logout } = useAuth();
+
+    return (
+        <div className="min-h-screen bg-dark-bg text-gray-100 flex flex-col">
+            <nav className="bg-dark-card border-b border-gray-700 py-4 px-6 flex justify-between items-center shadow-lg">
+                <Link to="/" className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary hover:opacity-80 transition-opacity">
+                    EventPass
+                </Link>
+                <div className="flex gap-4 items-center">
+                    {user ? (
+                        <>
+                            <span className="text-gray-400">Hello, {user.name}</span>
+                            {user.role === 'ADMIN' && (
+                                <Link to="/admin" className="text-gray-300 hover:text-white transition-colors">Dashboard</Link>
+                            )}
+                            {user.role === 'USER' && (
+                                <Link to="/my-tickets" className="text-gray-300 hover:text-white transition-colors">My Tickets</Link>
+                            )}
+                            <button
+                                onClick={logout}
+                                className="bg-danger hover:bg-danger-hover text-white px-4 py-2 rounded-md transition-colors font-medium text-sm"
+                            >
+                                Logout
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <Link to="/login" className="text-gray-300 hover:text-primary transition-colors">Login</Link>
+                            <Link to="/register" className="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-md transition-colors font-medium text-sm">
+                                Sign Up
+                            </Link>
+                        </>
+                    )}
+                </div>
+            </nav>
+            <main className="flex-1 container mx-auto p-6">
+                <Outlet />
+            </main>
+            <footer className="bg-dark-card border-t border-gray-700 py-6 text-center text-gray-500 text-sm">
+                &copy; {new Date().getFullYear()} EventPass. All rights reserved.
+            </footer>
+        </div>
+    );
+};
