@@ -36,6 +36,8 @@ export class TicketService {
 
             // 3. Generate Secure Code
             const ticketId = randomUUID();
+            // Generate a signed JWT containing the ticketId. This complies with the validation logic.
+            const secureCode = signToken({ ticketId });
 
             // 4. Create Ticket & Decrement Counter
             const ticket = await tx.ticket.create({
@@ -43,7 +45,7 @@ export class TicketService {
                     id: ticketId,
                     userId,
                     eventId,
-                    code: ticketId, // We use the ID as the base code
+                    code: secureCode, // Store the signed JWT
                 },
             });
 
